@@ -254,7 +254,7 @@ func TestDialCookieJar(t *testing.T) {
 		u.Scheme = "https"
 	}
 
-	cookies := []*http.Cookie{{Name: "gorilla", Value: "ws", Path: "/"}}
+	cookies := []*http.Cookie{{Name: "pariseed", Value: "ws", Path: "/"}}
 	d.Jar.SetCookies(u, cookies)
 
 	ws, _, err := d.Dial(s.URL, nil)
@@ -263,18 +263,18 @@ func TestDialCookieJar(t *testing.T) {
 	}
 	defer ws.Close()
 
-	var gorilla string
+	var pariseed string
 	var sessionID string
 	for _, c := range d.Jar.Cookies(u) {
-		if c.Name == "gorilla" {
-			gorilla = c.Value
+		if c.Name == "pariseed" {
+			pariseed = c.Value
 		}
 
 		if c.Name == "sessionID" {
 			sessionID = c.Value
 		}
 	}
-	if gorilla != "ws" {
+	if pariseed != "ws" {
 		t.Error("Cookie not present in jar.")
 	}
 
