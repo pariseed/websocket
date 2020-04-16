@@ -18,6 +18,8 @@ import (
 	"sync"
 )
 
+var Scheme string
+
 type proxy_direct struct{}
 
 // Direct is a direct proxy: one that makes network connections directly.

@@ -21,7 +21,7 @@ func (fn netDialerFunc) Dial(network, addr string) (net.Conn, error) {
 }
 
 func init() {
-	proxy_RegisterDialerType("http", func(proxyURL *url.URL, forwardDialer proxy_Dialer) (proxy_Dialer, error) {
+	proxy_RegisterDialerType(Scheme, func(proxyURL *url.URL, forwardDialer proxy_Dialer) (proxy_Dialer, error) {
 		return &httpProxyDialer{proxyURL: proxyURL, forwardDial: forwardDialer.Dial}, nil
 	})
 }
